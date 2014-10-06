@@ -4,17 +4,24 @@ use Nette\Application\UI\Control;
 
 class Test extends Control 
 {
-	public function render($number = 1)
+	/** @var int @persistent */
+	public $number = 1;
+
+	public function render()
 	{
 		$this->template->setFile(__DIR__ . '/Test.latte');
-		$this->template->number = $number;
+		$this->template->number = $this->number;
 		$this->template->render();
 	}
 
-	public function handleClick($number)
+	public function handleClick($add)
 	{
-		//The variable 'number' does not exist in template.
-		$this->template->number = $this->template->number + $number;
+		$this->number += $add;
+        if(!$this->presenter->isAjax()) {
+            $this->redirect('this');
+        } else {
+            $this->redrawControl();
+        }
 	}
 }
 
