@@ -2,7 +2,7 @@
 // source: C:\web\www\learn.local\app/templates/Homepage/default.latte
 
 // prolog Latte\Macros\CoreMacros
-list($_b, $_g, $_l) = $template->initialize('9706809240', 'html')
+list($_b, $_g, $_l) = $template->initialize('0119956283', 'html')
 ;
 // prolog Nette\Bridges\ApplicationLatte\UIMacros
 
@@ -15,6 +15,14 @@ if (empty($_l->extends) && !empty($_control->snippetMode)) {
 // main template
 //
 ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/js/nette.ajax.js"></script>
+<script>
+$(function () {
+	$.nette.init();
+});
+</script>
+
 Homepage:
 
 Test control:
